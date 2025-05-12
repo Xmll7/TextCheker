@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asosiy Sahifa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Top Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            background-color: rgba(44, 62, 80, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: #27ae60;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #27ae60;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #27ae60;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0 3rem;
+            background: linear-gradient(135deg, #2C3E50 0%, #1a2634 100%);
+            color: white;
+            flex-wrap: wrap;
+            padding-top: 80px;
+        }
+
+        .hero-text {
+            max-width: 50%;
+            text-align: left;
+            animation: fadeInLeft 1s ease;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: #27ae60;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .button {
+            background-color: #27ae60;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-weight: 500;
+            margin-right: 15px;
+        }
+
+        .button:hover {
+            background-color: transparent;
+            border-color: #27ae60;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .button.secondary {
+            background-color: transparent;
+            border: 2px solid #27ae60;
+        }
+
+        .button.secondary:hover {
+            background-color: #27ae60;
+        }
+
+        .hero-img {
+            display: block;
+            max-width: 40%;
+            animation: fadeInRight 1s ease;
+        }
+
+        .hero-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: transform 0.5s;
+        }
+
+        .hero-img:hover img {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        /* Animations */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 6rem 2rem 2rem;
+            }
+
+            .hero-text {
+                max-width: 100%;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            .hero-img {
+                max-width: 100%;
+            }
+
+            .button {
+                margin-right: 0;
+                margin-bottom: 15px;
+                display: block;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Navigation Bar -->
+<nav class="navbar">
+    <a href="#" class="logo">
+        <i class="fas fa-code"></i>
+        Text web
+    </a>
+
+    <div class="nav-links">
+        <a href="">Bosh Sahifa</a>
+        <a href="{% url 'text' %}">Gramatik taxlil</a>
+        <a href="{% url 'text' %}">Text edite</a>
+        <a href="{% url 'logout' %}">Logout</a>
+        {#      <a href="{% url 'logout' %}">Logout</a>#}
+    </div>
+
+    <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+</nav>
+
+<!-- Hero Section -->
+<main class="hero">
+    <div class="hero-text">
+        <h1>Assalomu alaykum! <br><span>Text web</span> ga xush kelibsiz</h1>
+        <p>
+            Biz sizga zamonaviy va qulay web-saytlar yaratishda yordam beramiz.
+            Bizning tajribali jamoamiz sizning ehtiyojlaringizga mos dizayn taklif qiladi.
+            Tezkor xizmatimiz bilan veb-saytingiz qisqa vaqt ichida tayyor bo'ladi.
+            Foydalanuvchiga qulay interfeys va mobil moslashuvchan dizaynlar taqdim etamiz.
+            Texnik yordam xizmatimiz doimiy ravishda sizga yordam beradi.
+            Biz har qanday murakkablikdagi veb-saytlarni ishonchli tarzda loyihalashtiramiz.
+        </p>
+{#        <div class="button-group">#}
+{#            <a href="#" class="button">Batafsil</a>#}
+{#            <a href="#" class="button secondary">Xizmatlar</a>#}
+{#        </div>#}
+    </div>
+    <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Web Dasturlash">
+    </div>
+</main>
+
+<script>
+    // Mobile menu toggle functionality
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function () {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // Responsive menu adjustment
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 768) {
+            document.querySelector('.nav-links').style.display = 'flex';
+        } else {
+            document.querySelector('.nav-links').style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
