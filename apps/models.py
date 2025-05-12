@@ -3,7 +3,7 @@ from django.db import models
 
 
 class User(AbstractUser):
-    username = None  # Username maydonini olib tashlaymiz
+    username = None
     email = models.EmailField(max_length=255, unique=True)
     address = models.IntegerField(null=True, blank=True)
 
